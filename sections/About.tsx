@@ -6,7 +6,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import styles from "./About.module.css";
 
 const ARCH_NODES = [
-  { id: "frontend", icon: Globe, label: "Frontend", detail: "React / Next.js" },
+  { id: "frontend", icon: Globe, label: "Frontend", detail: "React.js" },
   { id: "auth", icon: Lock, label: "Auth", detail: "JWT Security" },
   { id: "api", icon: Server, label: "API Gateway", detail: "FastAPI REST" },
   { id: "service", icon: Code2, label: "Service Layer", detail: "Business Logic" },
