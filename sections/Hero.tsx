@@ -82,7 +82,7 @@ export default function Hero() {
 
         {/* Right Column: Cinematic Portrait */}
         <div className={styles.contentRight}>
-          <FadeIn delay={0.2} className={styles.profileFadeWrapper}>
+          <FadeIn delay={0.2} fullWidth className={styles.profileFadeWrapper}>
             <motion.div
               className={styles.profileImageWrapper}
               animate={{ 
