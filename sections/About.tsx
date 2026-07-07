@@ -13,7 +13,7 @@ export default function About() {
       <div className={styles.container}>
         <FadeIn>
           <h2 className={styles.sectionTitle}>
-            Engineering <span>Philosophy.</span>
+            My <span>Introduction.</span>
           </h2>
         </FadeIn>
 
@@ -45,25 +45,60 @@ export default function About() {
           <FadeIn delay={0.5} direction="up">
             <div className={styles.architectureWrapper}>
               <div className={styles.archTitle}>System Architecture Blueprint</div>
-              <div className={styles.archDiagram}>
-                <motion.div className={styles.node} whileHover={{ scale: 1.05 }}>
-                  <Cloud size={24} /> API Gateway
-                </motion.div>
-                <motion.div className={styles.line} initial={{ height: 0 }} whileInView={{ height: 40 }} viewport={{ once: true }} transition={{ duration: 1 }} />
-                <motion.div className={styles.node} whileHover={{ scale: 1.05 }}>
-                  <Server size={24} /> Microservices
-                </motion.div>
-                <div className={styles.branch}>
-                  <motion.div className={styles.branchLine} initial={{ width: 0 }} whileInView={{ width: 80 }} viewport={{ once: true }} transition={{ delay: 1, duration: 1 }} />
-                  <motion.div className={styles.branchLine} initial={{ width: 0 }} whileInView={{ width: 80 }} viewport={{ once: true }} transition={{ delay: 1, duration: 1 }} />
+              <div className={styles.treeDiagram}>
+                <div className={styles.treeSection}>
+                  <h4 className={styles.treeRoot}>Frontend</h4>
+                  <ul className={styles.treeList}>
+                    <li>React.js</li>
+                    <li>Next.js</li>
+                    <li className={styles.lastNode}>Responsive UI</li>
+                  </ul>
                 </div>
-                <div className={styles.dbNodes}>
-                  <motion.div className={styles.node} whileHover={{ scale: 1.05 }}>
-                    <Database size={24} /> PostgreSQL
-                  </motion.div>
-                  <motion.div className={styles.node} whileHover={{ scale: 1.05 }}>
-                    <Database size={24} /> Redis
-                  </motion.div>
+                
+                <div className={styles.treeSection}>
+                  <h4 className={styles.treeRoot}>Communication</h4>
+                  <ul className={styles.treeList}>
+                    <li>REST API</li>
+                    <li>HTTPS</li>
+                    <li className={styles.lastNode}>JSON</li>
+                  </ul>
+                </div>
+
+                <div className={styles.treeSection}>
+                  <h4 className={styles.treeRoot}>Backend</h4>
+                  <ul className={styles.treeList}>
+                    <li>FastAPI</li>
+                    <li>Python</li>
+                    <li>JWT Authentication</li>
+                    <li className={styles.lastNode}>Pydantic Validation</li>
+                  </ul>
+                </div>
+
+                <div className={styles.treeSection}>
+                  <h4 className={styles.treeRoot}>Architecture</h4>
+                  <ul className={styles.treeList}>
+                    <li>Layered Architecture</li>
+                    <li>Service Layer</li>
+                    <li>Repository Pattern</li>
+                    <li className={styles.lastNode}>Modular Design</li>
+                  </ul>
+                </div>
+
+                <div className={styles.treeSection}>
+                  <h4 className={styles.treeRoot}>Data Layer</h4>
+                  <ul className={styles.treeList}>
+                    <li>SQLAlchemy ORM</li>
+                    <li className={styles.lastNode}>MySQL</li>
+                  </ul>
+                </div>
+
+                <div className={styles.treeSection}>
+                  <h4 className={styles.treeRoot}>Development</h4>
+                  <ul className={styles.treeList}>
+                    <li>Docker</li>
+                    <li>Git</li>
+                    <li className={styles.lastNode}>GitHub</li>
+                  </ul>
                 </div>
               </div>
             </div>

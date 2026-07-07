@@ -96,68 +96,57 @@
   letter-spacing: 2px;
 }
 
-.archDiagram {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.treeDiagram {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
   width: 100%;
 }
 
-.node {
-  background: var(--surface);
-  border: 1px solid var(--accent);
-  padding: 1rem 1.5rem;
-  border-radius: 0.75rem;
+.treeSection {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 600;
+  flex-direction: column;
+}
+
+.treeRoot {
+  font-size: 1.1rem;
   color: var(--primary);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
-  position: relative;
-  z-index: 2;
-}
-
-.line {
-  width: 2px;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  z-index: 1;
-}
-
-.branch {
-  display: flex;
-  justify-content: center;
-  width: 160px;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
   position: relative;
 }
 
-.branchLine {
-  height: 2px;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
+.treeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
 }
 
-.branchLine:first-child {
-  transform-origin: right center;
-}
-.branchLine:last-child {
-  transform-origin: left center;
+.treeList li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
-.dbNodes {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
+.treeList li::before {
+  content: '├──';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--border);
+  font-family: monospace;
+}
+
+.treeList li.lastNode::before {
+  content: '└──';
 }
 
 @media (max-width: 768px) {
-  .dbNodes {
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem; /* Adjusted for mobile vertical stacking without complex branch lines */
-  }
-  .branch {
-    display: none;
+  .treeDiagram {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }

@@ -46,7 +46,7 @@ export default function Hero() {
 
           <FadeIn delay={0.2}>
             <h1 className={styles.title}>
-              Sai Joshi <br />
+              Karri Joshi Sai Govind <br />
               <div className={styles.roleWrapper}>
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -95,9 +95,6 @@ export default function Hero() {
             style={{ x: parallaxX, y: parallaxY }}
           >
             <div className={styles.imageGlow} />
-            <svg className={styles.blobBorder} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path fill="none" stroke="var(--accent)" strokeWidth="2" d="M42.7,-62.9C50.9,-52.8,49.8,-32.1,51.8,-15.5C53.8,1.2,59,13.7,55,24.8C51,35.9,37.8,45.5,23.3,51.9C8.8,58.3,-7.1,61.4,-22,57.5C-37,53.7,-50.9,42.9,-58.5,28.8C-66.2,14.6,-67.7,-2.9,-61.7,-17.1C-55.7,-31.3,-42.2,-42.3,-29,-50.2C-15.8,-58.1,-2.9,-63,14,-65.4C30.9,-67.9,47.8,-67.9,42.7,-62.9Z" transform="translate(100 100)" />
-            </svg>
             {[...Array(5)].map((_, i) => (
               <motion.div 
                 key={i} 

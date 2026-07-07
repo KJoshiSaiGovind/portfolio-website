@@ -61,14 +61,7 @@ export default function Contact() {
                   <MapPin className={styles.infoIcon} size={24} />
                   <div>
                     <h4>Location</h4>
-                    <p>Remote / Global</p>
-                  </div>
-                </div>
-                <div className={styles.infoItem}>
-                  <Clock className={styles.infoIcon} size={24} />
-                  <div>
-                    <h4>Timezone</h4>
-                    <p>IST (GMT+5:30)</p>
+                    <p>Visakhapatnam, India</p>
                   </div>
                 </div>
                 <div className={styles.infoItem}>
