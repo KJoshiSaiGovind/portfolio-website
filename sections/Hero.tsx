@@ -73,8 +73,12 @@ export default function Hero() {
               <div className={styles.stackTitle}>Core Stack</div>
               <div className={styles.techGrid}>
                 <div className={styles.techItem}><Code2 size={24} /> <span>Python</span></div>
-                <div className={styles.techItem}><Database size={24} /> <span>SQL</span></div>
-                <div className={styles.techItem}><Globe size={24} /> <span>Next.js</span></div>
+                <div className={styles.techItem}><Terminal size={24} /> <span>FastAPI</span></div>
+                <div className={styles.techItem}><Database size={24} /> <span>MySQL</span></div>
+                <div className={styles.techItem}><Globe size={24} /> <span>React</span></div>
+                <div className={styles.techItem}><Code2 size={24} /> <span>JavaScript</span></div>
+                <div className={styles.techItem}><Database size={24} /> <span>Docker</span></div>
+                <div className={styles.techItem}><Terminal size={24} /> <span>Git</span></div>
               </div>
             </div>
           </FadeIn>
