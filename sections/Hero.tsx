@@ -50,16 +50,31 @@ export default function Hero() {
           </div>
         </FadeIn>
 
-        {/* Center: Profile Image */}
+        {/* Center: Profile Image (Cinematic) */}
         <FadeIn delay={0.2} className={`${styles.bentoCard} ${styles.cardProfile}`}>
           <div className={styles.imageGlow} />
-          <Image 
-            src="/profile.jpg" 
-            alt="Profile" 
-            fill
-            className={styles.profilePic} 
-            priority
-          />
+          <motion.div
+            className={styles.profileImageWrapper}
+            animate={{ 
+              scale: [1, 1.02, 1],
+              y: [0, -3, 0]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{ width: "100%", height: "100%", position: "relative" }}
+          >
+            <Image 
+              src="/profile.jpg" 
+              alt="Profile" 
+              fill
+              className={styles.profilePic} 
+              priority
+              style={{ objectFit: 'cover' }}
+            />
+          </motion.div>
         </FadeIn>
 
         {/* Top Right: Location */}

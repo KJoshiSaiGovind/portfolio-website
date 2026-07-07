@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, MouseEvent } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef, MouseEvent, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { FolderGit2, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/icons/GithubIcon";
 import { projects } from "@/data/projects";
@@ -42,12 +42,18 @@ function ProjectCard({ project, idx }: { project: typeof projects[0], idx: numbe
 
   const isFullWidth = idx % 3 === 0;
 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.div 
       className={`${styles.card} ${isFullWidth ? styles.fullWidth : styles.stacked}`} 
       ref={cardRef} 
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        handleMouseLeave();
+        setIsHovered(false);
+      }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -78,6 +84,28 @@ function ProjectCard({ project, idx }: { project: typeof projects[0], idx: numbe
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            className={styles.apiVisualizer}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className={styles.apiHeader}>
+              <span className={styles.method}>GET</span>
+              <span className={styles.endpoint}>/api/v1/projects/{project.title.toLowerCase().replace(/\s+/g, '-')}</span>
+            </div>
+            <div className={styles.apiBody}>
+              <span className={styles.jsonKey}>"status"</span>: <span className={styles.jsonString}>"success"</span>,<br/>
+              <span className={styles.jsonKey}>"uptime"</span>: <span className={styles.jsonNumber}>99.99</span>,<br/>
+              <span className={styles.jsonKey}>"latency"</span>: <span className={styles.jsonNumber}>12ms</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

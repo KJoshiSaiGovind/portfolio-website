@@ -139,3 +139,52 @@
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
 }
+
+.apiVisualizer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.apiHeader {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.method {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.endpoint {
+  color: #a1a1aa;
+}
+
+.apiBody {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.jsonKey {
+  color: #3b82f6;
+}
+
+.jsonString {
+  color: #f59e0b;
+}
+
+.jsonNumber {
+  color: #a855f7;
+}

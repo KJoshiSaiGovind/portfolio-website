@@ -18,27 +18,30 @@
 }
 
 .orb1 {
-  width: 40vw;
-  height: 40vw;
-  background: rgba(59, 130, 246, 1); /* Blue */
-  top: -10%;
-  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: rgba(59, 130, 246, 0.4); /* Electric Blue */
+  top: -20%;
+  left: -20%;
+  filter: blur(120px);
 }
 
 .orb2 {
-  width: 50vw;
-  height: 50vw;
-  background: rgba(147, 51, 234, 1); /* Purple */
-  bottom: -20%;
-  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  background: rgba(10, 25, 60, 0.8); /* Dark Navy */
+  bottom: -30%;
+  right: -20%;
+  filter: blur(150px);
 }
 
 .orb3 {
-  width: 30vw;
-  height: 30vw;
-  background: rgba(59, 130, 246, 0.8); /* Lighter Blue */
-  top: 40%;
-  left: 60%;
+  width: 40vw;
+  height: 40vw;
+  background: rgba(59, 130, 246, 0.2); /* Lighter Blue */
+  top: 30%;
+  left: 50%;
+  filter: blur(100px);
 }
 
 .noise {

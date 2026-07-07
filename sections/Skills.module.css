@@ -1,19 +1,22 @@
 .skills {
-  padding: 8rem 2rem;
+  padding: 8rem 0;
   position: relative;
+  overflow: hidden;
+  background: var(--background);
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .sectionTitle {
-  font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+  color: #ffffff;
   margin-bottom: 4rem;
-  color: var(--primary);
   text-align: center;
 }
 
@@ -21,93 +24,112 @@
   color: var(--accent);
 }
 
-.cloudWrapper {
+.networkWrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: rgba(17, 17, 17, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.networkNode {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-}
-
-.categoryCluster {
-  position: relative;
-}
-
-.categoryTitle {
-  font-size: 1.5rem;
-  font-family: var(--font-heading);
-  color: var(--primary);
-  margin-bottom: 2rem;
-  display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 1rem;
+  min-width: 100px;
+  z-index: 2;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.categoryTitle::before {
-  content: '';
-  display: block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 15px var(--accent);
-}
-
-.skillNodes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: flex-start;
-  perspective: 1000px;
-}
-
-.node {
-  cursor: grab;
-  position: relative;
-}
-
-.node:active {
-  cursor: grabbing;
-}
-
-.nodeInner {
-  background: rgba(17, 17, 17, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1rem 1.5rem;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--primary);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-}
-
-.node:hover .nodeInner {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
+.networkNode:hover {
+  transform: scale(1.1);
+  border-color: rgba(59, 130, 246, 0.4);
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
 }
 
-.nodeRing {
+.nodeIcon {
+  color: var(--accent);
+}
+
+.networkNode span {
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.pulseRing {
   position: absolute;
-  inset: 0;
-  border-radius: 999px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   border: 1px solid var(--accent);
+  border-radius: 1rem;
+  animation: pulse 2s infinite;
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.3s ease;
+  pointer-events: none;
 }
 
-.node:hover .nodeRing {
-  opacity: 1;
-  transform: scale(1);
-  animation: pulseRing 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
 }
 
-@keyframes pulseRing {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.1); opacity: 0; }
+/* Positioning based on the grid structure we provided */
+.python { top: 60%; left: 15%; }
+.fastapi { top: 60%; left: 35%; }
+.sqlalchemy { top: 60%; left: 55%; }
+.mysql { top: 60%; left: 75%; }
+.git { top: 20%; left: 35%; }
+.cicd { top: 20%; left: 55%; }
+
+/* SVG Connections */
+.svgConnections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.lineBase {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 2;
+  stroke-dasharray: 4;
+}
+
+.lineAnimated {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 5px var(--accent-glow));
+}
+
+@media (max-width: 768px) {
+  .networkWrapper {
+    height: 600px;
+  }
+  .python { top: 15%; left: 50%; transform: translateX(-50%); }
+  .fastapi { top: 30%; left: 50%; transform: translateX(-50%); }
+  .sqlalchemy { top: 45%; left: 50%; transform: translateX(-50%); }
+  .mysql { top: 60%; left: 50%; transform: translateX(-50%); }
+  .git { top: 75%; left: 50%; transform: translateX(-50%); }
+  .cicd { top: 90%; left: 50%; transform: translateX(-50%); }
 }

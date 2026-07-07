@@ -1,9 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { skillCategories } from "@/data/skills";
 import FadeIn from "@/components/animations/FadeIn";
 import styles from "./Skills.module.css";
+import { Server, Database, Code2, Globe, Cpu, Workflow } from "lucide-react";
+
+const NETWORK = [
+  { id: "python", icon: Code2, label: "Python", col: 1, row: 2 },
+  { id: "fastapi", icon: Server, label: "FastAPI", col: 2, row: 2 },
+  { id: "sqlalchemy", icon: Workflow, label: "SQLAlchemy", col: 3, row: 2 },
+  { id: "mysql", icon: Database, label: "MySQL", col: 4, row: 2 },
+  { id: "git", icon: Globe, label: "Git", col: 2, row: 1 },
+  { id: "cicd", icon: Cpu, label: "CI/CD", col: 3, row: 1 }
+];
+
+const CONNECTIONS = [
+  { from: "python", to: "fastapi", path: "M 0 0 L 100 0" },
+  { from: "fastapi", to: "sqlalchemy", path: "M 0 0 L 100 0" },
+  { from: "sqlalchemy", to: "mysql", path: "M 0 0 L 100 0" },
+  { from: "git", to: "cicd", path: "M 0 0 L 100 0" },
+  { from: "git", to: "fastapi", path: "M 0 0 L 0 100" }
+];
 
 export default function Skills() {
   return (
@@ -11,50 +28,45 @@ export default function Skills() {
       <div className={styles.container}>
         <FadeIn>
           <h2 className={styles.sectionTitle}>
-            Technical <span>Cloud.</span>
+            Live <span>Topology.</span>
           </h2>
         </FadeIn>
 
-        <div className={styles.cloudWrapper}>
-          {skillCategories.map((category, idx) => (
-            <FadeIn key={category.title} delay={idx * 0.1}>
-              <div className={styles.categoryCluster}>
-                <h3 className={styles.categoryTitle}>{category.title}</h3>
-                <div className={styles.skillNodes}>
-                  {category.skills.map((skill, sIdx) => {
-                    const randomDuration = 3 + Math.random() * 2;
-                    const randomY = Math.random() * 15;
-                    return (
-                      <motion.div
-                        key={skill}
-                        className={styles.node}
-                        drag
-                        dragConstraints={{ left: -10, right: 10, top: -10, bottom: 10 }}
-                        dragElastic={0.2}
-                        whileHover={{ scale: 1.15, zIndex: 10 }}
-                        whileTap={{ scale: 0.95 }}
-                        animate={{ 
-                          y: [0, -randomY, 0], 
-                          rotate: [0, Math.random() > 0.5 ? 2 : -2, 0] 
-                        }}
-                        transition={{ 
-                          repeat: Infinity, 
-                          duration: randomDuration,
-                          ease: "easeInOut",
-                          delay: sIdx * 0.2
-                        }}
-                      >
-                        <div className={styles.nodeInner}>
-                          <div className={styles.nodeRing} />
-                          <span>{skill}</span>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
-            </FadeIn>
+        <div className={styles.networkWrapper}>
+          {NETWORK.map((node, i) => (
+            <motion.div
+              key={node.id}
+              className={`${styles.networkNode} ${styles[node.id]}`}
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2, type: "spring", stiffness: 200, damping: 20 }}
+            >
+              <div className={styles.pulseRing} />
+              <node.icon size={24} className={styles.nodeIcon} />
+              <span>{node.label}</span>
+            </motion.div>
           ))}
+          
+          <svg className={styles.svgConnections}>
+            {CONNECTIONS.map((conn, i) => (
+              <g key={i} className={styles[`conn-${conn.from}-${conn.to}`]}>
+                <path d={conn.path} className={styles.lineBase} />
+                <motion.path
+                  d={conn.path}
+                  className={styles.lineAnimated}
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1, opacity: [0, 1, 0] }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    ease: "linear",
+                    delay: i * 0.5 
+                  }}
+                />
+              </g>
+            ))}
+          </svg>
         </div>
       </div>
     </section>

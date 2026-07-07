@@ -4,55 +4,65 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Loader.module.css";
 
+const BOOT_SEQUENCE = [
+  "System Boot Sequence Initiated...",
+  "Initializing Portfolio Engine...",
+  "Loading Volumetric Assets...",
+  "Connecting Secure APIs...",
+  "Database Connected [Node-01]...",
+  "Authentication Successful...",
+  "Launching Interface..."
+];
+
 export default function Loader() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time for cinematic effect
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    let timeout: NodeJS.Timeout;
+    
+    if (currentLine < BOOT_SEQUENCE.length) {
+      timeout = setTimeout(() => {
+        setCurrentLine(prev => prev + 1);
+      }, currentLine === 0 ? 800 : Math.random() * 300 + 200); // Random typing speed
+    } else {
+      timeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 500);
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [currentLine]);
 
   return (
     <AnimatePresence>
-      {isLoading && (
+      {isVisible && (
         <motion.div
-          className={styles.loaderWrapper}
+          className={styles.loaderContainer}
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <motion.div
-            className={styles.logo}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            {["K", "J", "S", "G"].map((letter, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 50, rotateX: 90 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.15,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className={styles.letter}
+          <div className={styles.terminal}>
+            {BOOT_SEQUENCE.slice(0, currentLine + 1).map((line, index) => (
+              <motion.div 
+                key={index} 
+                className={styles.terminalLine}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                {letter}
-              </motion.span>
+                <span className={styles.prompt}>{">"}</span> {line}
+              </motion.div>
             ))}
-            <motion.div 
-              className={styles.glowEffect}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 0.8, scale: 1.2 }}
-              transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
-            />
-          </motion.div>
+            {currentLine < BOOT_SEQUENCE.length && (
+              <motion.div 
+                className={styles.cursor}
+                animate={{ opacity: [1, 0] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+              />
+            )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
