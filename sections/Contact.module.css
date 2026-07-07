@@ -1,0 +1,194 @@
+.contact {
+  padding: 8rem 2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-align: left;
+}
+
+.sectionTitle span {
+  color: var(--accent);
+}
+
+.subtitle {
+  text-align: left;
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.splitLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.leftPanel, .rightPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.infoIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.infoItem h4 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.infoItem p {
+  color: var(--secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: rgba(17, 17, 17, 0.4);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input, .textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  color: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  font-size: 1rem;
+  color: var(--secondary);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label,
+.textarea:focus ~ .label,
+.textarea:not(:placeholder-shown) ~ .label {
+  top: -1rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.inputGlow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+  z-index: 3;
+}
+
+.input:focus ~ .inputGlow,
+.textarea:focus ~ .inputGlow {
+  width: 100%;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitBtn {
+  background: var(--accent);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.submitBtn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+}
+
+.successMsg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .splitLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .sectionTitle, .subtitle {
+    text-align: center;
+  }
+  .contactInfo {
+    align-items: center;
+    text-align: center;
+  }
+  .infoItem {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .form {
+    padding: 2rem;
+  }
+}

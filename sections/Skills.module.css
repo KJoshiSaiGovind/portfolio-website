@@ -1,0 +1,113 @@
+.skills {
+  padding: 8rem 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 4rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.sectionTitle span {
+  color: var(--accent);
+}
+
+.cloudWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.categoryCluster {
+  position: relative;
+}
+
+.categoryTitle {
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  color: var(--primary);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.categoryTitle::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.skillNodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  perspective: 1000px;
+}
+
+.node {
+  cursor: grab;
+  position: relative;
+}
+
+.node:active {
+  cursor: grabbing;
+}
+
+.nodeInner {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.node:hover .nodeInner {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.nodeRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.node:hover .nodeRing {
+  opacity: 1;
+  transform: scale(1);
+  animation: pulseRing 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
