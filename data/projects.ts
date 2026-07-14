@@ -11,9 +11,25 @@ export const projects = [
     ],
     architecture: "Implemented Repository Pattern and Service Layer for maintainable database design.",
     github: "https://github.com/KJoshiSaiGovind",
-    live: "#",
+    live: "https://ats-analyzer-chi.vercel.app/",
     problem: "Recruiters spend too much time manually screening resumes.",
     solution: "Automated the process using NLP techniques to instantly match candidates to job descriptions.",
+  },
+  {
+    title: "TrafficWise – Intelligent Traffic Analytics",
+    description: "Full-stack machine learning platform for predicting vehicle traffic volume with interactive data visualizations.",
+    tech: ["Flask", "MySQL", "Scikit-learn", "XGBoost", "Chart.js", "Docker"],
+    features: [
+      "REST APIs for real-time traffic prediction",
+      "Interactive dashboard with KPI cards and visualizations",
+      "Automatic evaluation of multiple regression models",
+      "Dockerized deployment with Gunicorn"
+    ],
+    architecture: "Flask backend serving ML models connected to MySQL with connection pooling.",
+    github: "https://github.com/KJoshiSaiGovind/UrbanTrafficAnalysis.git",
+    live: "#",
+    problem: "Lack of intelligent forecasting makes it difficult to anticipate and manage traffic congestion.",
+    solution: "Engineered a predictive ML pipeline with a comprehensive analytics dashboard to forecast peak hours and trends.",
   },
   {
     title: "IoT Malware Detection System",
