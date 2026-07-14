@@ -10,7 +10,7 @@ export const projects = [
       "Recruiter and Candidate Dashboards"
     ],
     architecture: "Implemented Repository Pattern and Service Layer for maintainable database design.",
-    github: "https://github.com/KJoshiSaiGovind",
+    github: "https://github.com/KJoshiSaiGovind/ATS-Analyzer.git",
     live: "https://ats-analyzer-chi.vercel.app/",
     problem: "Recruiters spend too much time manually screening resumes.",
     solution: "Automated the process using NLP techniques to instantly match candidates to job descriptions.",
