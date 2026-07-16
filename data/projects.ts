@@ -56,7 +56,7 @@ export const projects = [
     ],
     architecture: "Monolithic architecture with a FastAPI backend and SSR/Static frontend integration.",
     github: "https://github.com/KJoshiSaiGovind/Recipe-Sharing.git",
-    live: "#",
+    live: "https://recipe-sharing143.netlify.app/",
     problem: "People need a centralized place to share and discover structured recipes.",
     solution: "Built a robust, normalized database system to handle structured recipe data efficiently.",
   },
