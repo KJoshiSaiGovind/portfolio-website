@@ -84,8 +84,8 @@ export const projects = [
       "Automated JSON Extraction"
     ],
     architecture: "Python script utilizing PdfPlumber to map graphical text elements to logical structures.",
-    github: "https://pdf-document-structure-extraction-website.streamlit.app/",
-    live: "#",
+    github: "https://github.com/KJoshiSaiGovind/PDF-Document-Structure-Extraction.git",
+    live: "https://pdf-document-structure-extraction-website.streamlit.app/",
     problem: "Extracting tabular or structured data from PDFs is difficult.",
     solution: "Created a robust parser that intelligently identifies document structure.",
   },
